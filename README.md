@@ -20,23 +20,23 @@ Your assignment page on Canvas should contain instructions for submitting this p
 | - | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | 1 | GET    | /api/posts              | Returns **an array of all the post objects** contained in the database                                                          |
 
-
+  DONE
 
 | 2 | GET    | /api/posts/:id          | Returns **the post object with the specified id**                                                                               |
 
-
+DONE
 
 | 3 | POST   | /api/posts              | Creates a post using the information sent inside the request body and returns **the newly created post object**                 |
 
-
+DONE!!
 
 | 4 | PUT    | /api/posts/:id          | Updates the post with the specified id using data from the request body and **returns the modified document**, not the original |
 
-
+Done
 
 | 5 | DELETE | /api/posts/:id          | Removes the post with the specified id and returns the **deleted post object**                                                  |
 
-
+done
 
 | 6 | GET    | /api/posts/:id/comments | Returns an **array of all the comment objects** associated with the post with the specified id                                  |
 

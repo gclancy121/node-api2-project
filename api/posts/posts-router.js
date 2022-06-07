@@ -39,14 +39,24 @@ router.post('/', (req, res) => {
 
 router.put('/:id',(req, res) => {
   const id = req.params.id;
-  Posts.update(id, req.body).then(result => {
-    if (result === 1) {
-      Posts.findById(id).then(data => {
-        res.status(200).json(data);
-      })
-    }
-  })
+  if (req.body.title == null || req.body.contents == null) {
+    res.status(400).json({message: "provide title and contents"})
+  } else {
+    Posts.update(id, req.body).then(result => {
+      if (result === 1) {
+        Posts.findById(id).then(data => {
+          res.status(200).json(data);
+        })
+      } else {
+        res.status(404).json({message: "does not exist"})
+      }
+    }) 
+  }
+ 
 })
+
+
+
 
 router.delete('/:id', (req, res) => {
   Posts.findById(req.params.id).then(result => {
@@ -63,7 +73,11 @@ router.delete('/:id', (req, res) => {
 
 router.get('/:id/comments', (req, res) => {
   Posts.findPostComments(req.params.id).then(result => {
-    res.json(result);
+  if (result[0] === undefined) {
+    res.status(404).json({message: 'does not exist'})
+  } else {
+    res.status(200).json(result);
+  } 
   })
 })
 

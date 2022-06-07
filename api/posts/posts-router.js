@@ -25,11 +25,16 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  Posts.insert(req.body).then(result => {
-   Posts.findById(result.id).then(q => {
-     res.status(201).json(q);
-   })
-  });
+  if (req.body.title == null || req.body.contents == null) {
+    res.status(400);
+    res.end();
+  } else {
+    Posts.insert(req.body).then(result => {
+      Posts.findById(result.id).then(q => {
+        res.status(201).json(q);
+      })
+     });
+  }
 });
 
 router.put('/:id',(req, res) => {

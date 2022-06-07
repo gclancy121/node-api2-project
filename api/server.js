@@ -1,2 +1,14 @@
-// implement your server here
-// require your posts router and connect it here
+// imports
+const express = require('express');
+const postsRouter = require('./posts/posts-router');
+
+//create server
+const server = express();
+server.use(express.json());
+
+//Use router
+server.use('/api/posts', postsRouter);
+
+
+
+module.exports = server;
